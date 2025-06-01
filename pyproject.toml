@@ -1,0 +1,97 @@
+# ============================
+# Projeto
+# ============================
+[project]
+name = "app_b"
+version = "0.0.1"
+description = "app_a"
+license = { text = "MIT" }
+authors = [{ name = "Seu nome", email = "seu@email.com" }]
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+app_b = "package.module:cli"
+
+[project.optional-dependencies]
+dev = ["ruff", "pyright"]
+
+
+# ============================
+# Lint e formatação (Ruff)
+# ============================
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+fix = true
+show-fixes = true
+indent-width = 4
+exclude = ["venv", ".venv", "env", ".env", "node_modules", "__pycache__"]
+
+
+[tool.ruff.lint]
+select = [
+    "ASYNC",
+    "A",
+    "ANN",
+    "B",
+    "BLE",
+    "C4",
+    "C90",
+    "COM",
+    "E",
+    "EM",
+    "ERA",
+    "EXE",
+    "F",
+    "FBT",
+    "FIX",
+    "I",
+    "ICN",
+    "ISC",
+    "Q",
+    "RET",
+    "RSE",
+    "S",
+    "SIM",
+    "SLF",
+    "T10",
+    "T20",
+    "TC",
+    "TD",
+    "TRY",
+    "UP",
+    "W",
+    "YTT",
+    "RUF",
+    "N",
+]
+ignore = ["T201", "COM812", ]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["ANN201", "S101"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
+
+# ============================
+# Tipagem (Pyright)
+# ============================
+[tool.pyright]
+typeCheckingMode = "strict"
+include = ["src"]
+exclude = [
+    "**/venv",
+    "**/.venv",
+    "**/env",
+    "**/.env",
+    "**/node_modules",
+    "**/__pycache__",
+]
+pythonVersion = "3.13"
+venv = "venv"
+venvPath = "."
+executionEnvironments = [{ root = "src" }]

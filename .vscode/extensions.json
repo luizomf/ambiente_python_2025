@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "tamasfe.even-better-toml",
+    "esbenp.prettier-vscode",
+    "charliermarsh.ruff",
+    "formulahendry.code-runner",
+    "bradlc.vscode-tailwindcss",
+    "chadalen.vscode-jetbrains-icon-theme",
+    "omthemes.omthemes"
+  ]
+}
