@@ -2,7 +2,6 @@
 
 **Quer entender tudo o que está nesse projeto?**
 
-
 Eu explico passo a passo como montar esse ambiente moderno no vídeo abaixo:
 
 - [https://youtu.be/zk40AZqF-FE](https://youtu.be/zk40AZqF-FE)
