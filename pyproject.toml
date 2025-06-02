@@ -2,20 +2,22 @@
 # Projeto
 # ============================
 [project]
-name = "app_b"
+name = "app_a"
 version = "0.0.1"
 description = "app_a"
 license = { text = "MIT" }
 authors = [{ name = "Seu nome", email = "seu@email.com" }]
-requires-python = ">=3.11"
+requires-python = ">=3.13"
 dependencies = []
 
 [project.scripts]
 app_b = "package.module:cli"
 
 [project.optional-dependencies]
-dev = ["ruff", "pyright"]
+dev = ["ruff", "pyright", "pytest", "pytest-xdist"]
 
+[tool.setuptools.packages.find]
+where = ["src"]
 
 # ============================
 # Lint e formatação (Ruff)
@@ -27,7 +29,6 @@ fix = true
 show-fixes = true
 indent-width = 4
 exclude = ["venv", ".venv", "env", ".env", "node_modules", "__pycache__"]
-
 
 [tool.ruff.lint]
 select = [
@@ -66,7 +67,7 @@ select = [
     "RUF",
     "N",
 ]
-ignore = ["T201", "COM812", ]
+ignore = ["T201", "COM812"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = ["ANN201", "S101"]
@@ -82,7 +83,8 @@ line-ending = "lf"
 # ============================
 [tool.pyright]
 typeCheckingMode = "strict"
-include = ["src"]
+pythonVersion = "3.13"
+include = ["src", 'tests']
 exclude = [
     "**/venv",
     "**/.venv",
@@ -91,7 +93,23 @@ exclude = [
     "**/node_modules",
     "**/__pycache__",
 ]
-pythonVersion = "3.13"
 venv = "venv"
 venvPath = "."
 executionEnvironments = [{ root = "src" }]
+
+
+# ============================
+# Testes (Pytest)
+# ============================
+[tool.pytest.ini_options]
+addopts = "-s --color=yes --tb=short"
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+
+# ============================
+# Build (opcional)
+# ============================
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
