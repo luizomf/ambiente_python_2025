@@ -1,0 +1,9 @@
+# Linters e formatadores
+ruff
+
+# Tipagem
+pyright
+
+# Testes
+pytest
+pytest-xdist
