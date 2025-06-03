@@ -2,11 +2,11 @@
 
 **Quer entender tudo o que está nesse projeto?**
 
-Eu explico passo a passo como montar esse ambiente moderno no vídeo abaixo:
+Eu explico passo a passo como montar esse ambiente moderno nos vídeos abaixo:
 
-- Parte 1: [Ambiente Python Moderno - Tradicional](https://youtu.be/QTw5eB6GTM8)
-- Parte 2: [Ambiente Python Moderno - Pyenv e Pyenv-win](https://youtu.be/X38M7C_A2XU)
-- Parte 3: [Ambiente Python Moderno - UV Astral](https://youtu.be/HuAc85cLRx0)
+* Parte 1: [Ambiente Python Moderno - Tradicional](https://youtu.be/QTw5eB6GTM8)
+* Parte 2: [Ambiente Python Moderno - Pyenv e Pyenv-win](https://youtu.be/X38M7C_A2XU)
+* Parte 3: [Ambiente Python Moderno - UV Astral](https://youtu.be/HuAc85cLRx0)
 
 ---
 
@@ -14,16 +14,16 @@ Eu explico passo a passo como montar esse ambiente moderno no vídeo abaixo:
 
 Este projeto serve como um esqueleto moderno para projetos Python utilizando:
 
-- Python 3.13+
-- VS Code com extensões
-- Ambiente virtual (venv ou [uv](https://docs.astral.sh/uv/getting-started/))
-- Controle de versões do Python ([pyenv](https://github.com/pyenv/pyenv) / [pyenv-win](https://github.com/pyenv-win/pyenv-win) ou [uv](https://docs.astral.sh/uv/getting-started/))
-- Lint e formatação com [Ruff](https://github.com/astral-sh/ruff)
-- Tipagem estática e Lint com Pylance e [Pyright](https://github.com/microsoft/pyright)
-- Execução e testes rápidos com Code Runner
-- Configuração geral do VS Code
-- Temas para ícones e VS Code
-- Configuração inicial do Git no projeto
+* Python 3.13+
+* VS Code com extensões
+* Ambiente virtual (venv ou [uv](https://docs.astral.sh/uv/getting-started/))
+* Controle de versões do Python ([pyenv](https://github.com/pyenv/pyenv) / [pyenv-win](https://github.com/pyenv-win/pyenv-win) ou [uv](https://docs.astral.sh/uv/getting-started/))
+* Lint e formatação com [Ruff](https://github.com/astral-sh/ruff)
+* Tipagem estática e Lint com Pylance e [Pyright](https://github.com/microsoft/pyright)
+* Execução e testes rápidos com Code Runner
+* Configuração geral do VS Code
+* Temas para ícones e VS Code
+* Configuração inicial do Git no projeto
 
 ---
 
@@ -80,7 +80,7 @@ Para Windows você precisa liberar o PowerShell:
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
-Links - ([pyenv](https://github.com/pyenv/pyenv) / [pyenv-win](https://github.com/pyenv-win/pyenv-win)
+Links - ([pyenv](https://github.com/pyenv/pyenv) / [pyenv-win](https://github.com/pyenv-win/pyenv-win))
 
 Após a instalação, os comandos abaixo vão te ajudar.
 
@@ -101,70 +101,56 @@ pyenv exec python -m venv .venv # Cria um ambiente virtual com o Python global
 
 Pronto, agora siga as instruções do vídeo tutorial.
 
+---
+
 ## Gerenciando tudo com o uv
 
-[uv](https://docs.astral.sh/uv/getting-started/) é uma ferramenta que promete bastante. Sua intenção é substituir praticamente todas as outras ferramentas: pip, pip-tools, pipx, poetry, pyenv, twine, virtualenv, e outras... Até agora tem cumprido tudo com perfeição. Além disso, é uma ferramente extremamente rápida, escrita em Rust.
+[uv](https://docs.astral.sh/uv/getting-started/) é uma ferramenta que promete bastante. Sua intenção é substituir praticamente todas as outras ferramentas: pip, pip-tools, pipx, poetry, pyenv, twine, virtualenv, e outras... Até agora tem cumprido tudo com perfeição. Além disso, é uma ferramenta extremamente rápida, escrita em Rust.
 
 ```sh
-# Se você quiser, pode instalar a versão do Python desejada com uv (opcional)
-uv python list # mostra verões do python disponíveis
-uv python install 3.12.10 # instala o Python 3.12.10
-uv python pin 3.12.10 # Configura o Python 3.12.10 para este projeto
+# Instalação do uv (Windows, Linux, Mac)
+# Windows PowerShell:
+iwr https://astral.sh/uv/install.ps1 -useb | iex
 
-###
-
-# Cria o projeto
-uv init NOME_DA_PASTA
-cd NOME_DA_PASTA
-# Se você já tem um projeto, abra-o e digite `uv init`
-
-###
-# Criando o ambiente virtual (opcional)
-uv venv .venv
-# Ativando o ambiente virtual
-# Windows Powershell
-.\.venv\Scripts\activate.ps1
-# Windows cmd
-.\.venv\Scripts\activate.bat
-# Linux e Mac
-source .venv/bin/activate
-
-###
-
-# Instalando pacotes (requests e numpy)
-uv add requests numpy
-# Remove pacotes (numpy)
-uv remove numpy
-# Para arquivos requirement.txt
-uv add -r requirements.txt
-
-###
-# Executando seu programa
-# Com `uv run` você não precisa ativar o ambiente virtual
-uv run entrada.py # entrada.py é o primeiro módulo do seu programa
-# Outro exemplo
-uv run .\src\main.py # Windows
-# ou
-uv run ./src/main.py # Mac e Linux
-
-###
-
-# Sincroniza qualquer projeto com o uv
-# Basicamente isso sobe o projeto do zero
-# cria ambiente e instala tudo que é necessário para o projeto
-uv sync
-
-###
-# Usando comandos do pip com uv
-uv pip install -e . # instala o código do projeto de forma editável
-# Ferramentas que tem executáveis podem ser instaladas
-uv tool install ruff
-uv tool install pyright
-# Ou simplesmente executadas sem instalar nada
-uvx ruff
-# Para remover ferramentas
-uv tool uninstall pyright
+# Linux/macOS (curl)
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
+
+```sh
+# Cria o projeto completo
+diretório: uv init nome-do-projeto
+
+# Ou inicializa dentro de um projeto existente:
+uv init
+```
+
+```sh
+# Instala Python, cria venv e instala dependências em 1 comando
+uv sync
+```
+
+```sh
+# Instala pacotes
+uv add requests ruff pyright
+
+# Remove pacotes
+uv remove requests
+
+# Requerimentos via requirements.txt
+uv add -r requirements.txt
+```
+
+```sh
+# Executa scripts Python sem ativar venv
+uv run src/main.py
+
+# Instala ferramentas como ruff ou pyright globalmente
+uv tool install ruff
+uvx ruff
+uv tool uninstall ruff
+```
+
+---
 
 ## Configuração do Git
 
@@ -182,7 +168,6 @@ git branch -m main
 
 # Padroniza finais de linha para multiplataforma
 git config --global core.autocrlf input
-
 git config --global core.eol lf
 
 git config --list --global
@@ -200,5 +185,3 @@ git add .
 git commit -m "MENSAGEM"
 git push
 ```
-
----
