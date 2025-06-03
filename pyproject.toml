@@ -2,16 +2,16 @@
 # Projeto
 # ============================
 [project]
-name = "app_a"
+name = "project1"
 version = "0.0.1"
-description = "app_a"
+description = "project1"
 license = { text = "MIT" }
 authors = [{ name = "Seu nome", email = "seu@email.com" }]
 requires-python = ">=3.13"
 dependencies = []
 
 [project.scripts]
-app_b = "package.module:cli"
+project1 = "my_package.my_module:run_from_script"
 
 [project.optional-dependencies]
 dev = ["ruff", "pyright", "pytest", "pytest-xdist"]
@@ -93,7 +93,7 @@ exclude = [
     "**/node_modules",
     "**/__pycache__",
 ]
-venv = "venv"
+venv = ".venv"
 venvPath = "."
 executionEnvironments = [{ root = "src" }]
 

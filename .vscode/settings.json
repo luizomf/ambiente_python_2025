@@ -39,11 +39,12 @@
       "source.organizeImports.ruff": "explicit"
     }
   },
-  "python.defaultInterpreterPath": ".\\venv\\Scripts\\python.exe", // ou ./venv/bin/python Mac/Linux
+  "python.defaultInterpreterPath": ".\\.venv\\Scripts\\python.exe", // ou ./.venv/bin/python Mac/Linux
   "python.analysis.autoImportCompletions": true,
   "python.terminal.activateEnvInCurrentTerminal": true,
   "python.terminal.activateEnvironment": true,
   "python.languageServer": "Pylance",
+  "python.venvPath": ".venv",
 
   // 🛠 Formatação e Lint
   "editor.defaultFormatter": "esbenp.prettier-vscode",
