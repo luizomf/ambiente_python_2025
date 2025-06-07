@@ -1,5 +1,6 @@
 # ============================
 # Projeto
+# Referência: https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
 # ============================
 [project]
 name = "project1"
@@ -9,6 +10,14 @@ license = { text = "MIT" }
 authors = [{ name = "Seu nome", email = "seu@email.com" }]
 requires-python = ">=3.13"
 dependencies = []
+
+# Você não precisa preencher todas as URLs aqui (é um exemplo)
+[project.urls]
+Homepage = "https://www.otaviomiranda.com.br/"
+# Documentation = "https://example.org"
+# Repository = "https://github.com/me/spam.git"
+# Issues = "https://github.com/me/spam/issues"
+# Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
 
 [project.scripts]
 project1 = "my_package.my_module:run_from_script"
