@@ -63,6 +63,8 @@ O processo é super simples:
 
 ```sh
 python -m venv .venv
+# Ativa o ambiente virtual e depois instale o python-dotenv
+pip install python-dotenv
 ```
 
 Pronto, agora siga as instruções do vídeo tutorial.
