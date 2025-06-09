@@ -1,0 +1,153 @@
+# ============================
+# Projeto
+# Referência: https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
+#
+# Os pontos de atenção estão comentados próximo das chaves, aqui só coloquei um
+# lembrete.
+#
+# Atenção: As versões do Python devem ser consistentes entre:
+#   - project.requires-python
+#   - tool.ruff.target-version
+#   - tool.pyright.pythonVersion
+#
+# Atenção: O nome do pacote principal deve ser consistente entre:
+#   - project.scripts
+#   - tool.ruff.lint.isort.known-first-party
+#   - A pasta dentro de 'src/'
+# ============================
+[project]
+name = "project1"
+version = "0.0.1"
+description = "project1"
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Seu nome", email = "seu@email.com" }]
+requires-python = ">=3.13"
+dependencies = ["python-dotenv>=1.1.0"]
+
+[project.urls]
+Homepage = "https://www.otaviomiranda.com.br/"
+# Documentation = "https://example.org"
+# Repository = "https://github.com/me/spam.git"
+# Issues = "https://github.com/me/spam/issues"
+# Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
+
+[project.optional-dependencies]
+dev = ["ruff", "pyright", "pytest", "pytest-xdist"]
+
+[project.scripts]
+# Define os comandos de console. A chave ('project1') é o comando.
+# O valor aponta para 'nome_do_pacote.nome_do_modulo:nome_da_funcao'.
+# Ex: 'my_package.main:run' -> src/my_package/main.py (e a função run lá dentro).
+# Lembre-se de sincronizar o nome do pacote com 'known-first-party' do Ruff.
+project1 = "my_package.my_module:run_from_script"
+
+# ============================
+# Lint e formatação (Ruff)
+# ============================
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+fix = true
+show-fixes = true
+indent-width = 4
+exclude = ["venv", ".venv", "env", ".env", "node_modules", "__pycache__"]
+
+[tool.ruff.lint]
+select = [
+    "ASYNC",
+    "A",
+    "ANN",
+    "B",
+    "BLE",
+    "C4",
+    "C90",
+    "COM",
+    "E",
+    "EM",
+    "ERA",
+    "EXE",
+    "F",
+    "FBT",
+    "FIX",
+    "I",
+    "ICN",
+    "ISC",
+    "Q",
+    "RET",
+    "RSE",
+    "S",
+    "SIM",
+    "SLF",
+    "T10",
+    "T20",
+    "TC",
+    "TD",
+    "TRY",
+    "UP",
+    "W",
+    "YTT",
+    "RUF",
+    "N",
+]
+ignore = ["T201", "COM812"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["ANN201", "S101"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
+[tool.ruff.lint.isort]
+# Ensina ao Ruff qual é o pacote principal do seu projeto.
+# Deve ser o mesmo nome da pasta dentro de 'src/'.
+known-first-party = ["my_package"]
+
+
+# ============================
+# Tipagem (Pyright)
+# ============================
+[tool.pyright]
+typeCheckingMode = "strict"
+pythonVersion = "3.13"
+include = ["src", 'tests']
+exclude = [
+    "**/venv",
+    "**/.venv",
+    "**/env",
+    "**/.env",
+    "**/node_modules",
+    "**/__pycache__",
+]
+venv = ".venv"
+venvPath = "."
+executionEnvironments = [{ root = "src" }]
+
+# ============================
+# Testes (Pytest)
+# ============================
+[tool.pytest.ini_options]
+addopts = "-s --color=yes --tb=short"
+# Adiciona 'src' ao path do Python durante os testes. Isso permite que
+# os testes em `tests/` importem os módulos de `src/` sem erros.
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+
+# ============================
+# Build e Setuptools
+# ============================
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+# Informa ao setuptools para encontrar os pacotes dentro da pasta 'src'.
+# Essencial para a estrutura de layout com 'src/'.
+where = ["src"]
+
+[tool.setuptools]
+# Mapeia o diretório raiz de pacotes para 'src'.
+package-dir = { "" = "src" }
