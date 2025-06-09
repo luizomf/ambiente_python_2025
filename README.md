@@ -193,6 +193,17 @@ git push
 É extremamente comum precisarmos de variáveis de ambiente em nossos projetos. Sabendo
 disso, já adicionei o `python-dotenv` como dependência do projeto.
 
+Para instalar escolha uma das opções abaixo:
+
+```bash
+# Opção 1: pip
+pip install python-dotenv
+# Opção 2: uv pip
+uv pip install python-dotenv
+# Opção 3: uv
+uv sync
+```
+
 Copie o arquivo `.env-example` para outro arquivo chamado de `.env` para ativar as
 variáveis de ambiente. Já deixei um teste na função principal que pode responder duas coisas:
 

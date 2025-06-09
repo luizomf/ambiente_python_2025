@@ -1,5 +1,7 @@
 import os
 
+# Instale o pacote: python-dotenv
+# Mostrei como no README.md
 from dotenv import load_dotenv
 
 # Essa função DEVE ser carregada antes do import dos módulos
