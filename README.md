@@ -190,7 +190,7 @@ git push
 
 ---
 
-## `.env` e `.env-exemple`
+## `.env` e `.env-example`
 
 É extremamente comum precisarmos de variáveis de ambiente em nossos projetos. Sabendo
 disso, já adicionei o `python-dotenv` como dependência do projeto.
