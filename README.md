@@ -7,6 +7,7 @@ Eu explico passo a passo como montar esse ambiente moderno nos vídeos abaixo:
 - Parte 1: [Ambiente Python Moderno - Tradicional](https://youtu.be/QTw5eB6GTM8)
 - Parte 2: [Ambiente Python Moderno - Pyenv e Pyenv-win](https://youtu.be/X38M7C_A2XU)
 - Parte 3: [Ambiente Python Moderno - UV Astral](https://youtu.be/HuAc85cLRx0)
+- Parte 4: [Como iniciar novos projetos com Ambiente Python Moderno](https://youtu.be/TcfFXur4YKg)
 
 ---
 
